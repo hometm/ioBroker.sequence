@@ -1,0 +1,1282 @@
+{
+    "common": {
+        "name":                     "sequence",
+        "version":                  "0.0.1",
+        "title":                    "sequence Adapter",
+        "desc":                     {
+            "en": "sequence Adapter",
+            "de": "Schrittketten Adapter"
+        },
+        "platform":                 "Javascript/Node.js",
+        "mode":                     "daemon",
+        "icon":                     "sequence.png",
+        "extIcon":                  "https://raw.githubusercontent.com/hometm/ioBroker.sequence/master/admin/sequence.png",
+        "loglevel":                 "info",
+        "nondeletable":             true,
+        "keywords":                 ["sequence", "Schrittkette", "Ablaufsteuerung"],
+        "type":                     "script",
+        "main":                     "sequence.js",
+        "authors": [
+            "hometm"
+        ],
+        "license":                  "MIT",
+        "readme":                   "https://github.com/hometm/ioBroker.sequence/blob/master/README.md"
+    },
+    "native": {
+    },
+    "objects": [
+
+    ],
+    "instanceObjects":[
+        {
+            "_id":  "inputs",
+            "type": "channel",
+            "common": {
+                "role": "inputs",
+                "name": ""
+            },
+            "native": {}
+        },
+        {
+            "_id":  "inputs.cmd",
+            "type": "channel",
+            "common": {
+                "role": "inputs",
+                "name": ""
+            },
+            "native": {}
+        },
+        {
+            "_id":  "inputs.sequence",
+            "type": "channel",
+            "common": {
+                "role": "inputs",
+                "name": ""
+            },
+            "native": {}
+        },
+        {
+            "_id":  "outputs",
+            "type": "channel",
+            "common": {
+                "role": "outputs",
+                "name": ""
+            },
+            "native": {}
+        },
+        {
+            "_id":  "outputs.cmd",
+            "type": "channel",
+            "common": {
+                "role": "inputs",
+                "name": ""
+            },
+            "native": {}
+        },
+        {
+            "_id":  "outputs.sequence",
+            "type": "channel",
+            "common": {
+                "role": "inputs",
+                "name": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.cmd.start",
+            "type": "state",
+            "common": {
+                "name": "start sequence",
+                "type": "string",
+                "role": "",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.cmd.next",
+            "type": "state",
+            "common": {
+                "name": "Skip step",
+                "type": "string",
+                "role": "",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.cmd.stop",
+            "type": "state",
+            "common": {
+                "name": "stop sequence",
+                "type": "string",
+                "role": "",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.cmd.noOfLastStep",
+            "type": "state",
+            "common": {
+                "name": "stops sequence, jumps to end",
+                "type": "string",
+                "role": "",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "outputs.cmd.started",
+            "type": "state",
+            "common": {
+                "name": "sequence started",
+                "type": "string",
+                "role": "",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "outputs.cmd.stopped",
+            "type": "state",
+            "common": {
+                "name": "sequence stopped",
+                "type": "string",
+                "role": "",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "outputs.cmd.lastStepNo",
+            "type": "state",
+            "common": {
+                "name": "Number of last step",
+                "type": "string",
+                "role": "",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "outputs.cmd.lastStepname",
+            "type": "state",
+            "common": {
+                "name": "name of last step",
+                "type": "string",
+                "role": "",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "outputs.cmd.currentStepNo",
+            "type": "state",
+            "common": {
+                "name": "Number of current step",
+                "type": "string",
+                "role": "",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "outputs.cmd.currentStepName",
+            "type": "state",
+            "common": {
+                "name": "name of current step",
+                "type": "string",
+                "role": "",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "outputs.cmd.nextStepNo",
+            "type": "state",
+            "common": {
+                "name": "Number of next step",
+                "type": "string",
+                "role": "",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "outputs.cmd.nextStepname",
+            "type": "state",
+            "common": {
+                "name": "name of next step",
+                "type": "string",
+                "role": "",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "outputs.cmd.error",
+            "type": "state",
+            "common": {
+                "name": "Error occured",
+                "type": "string",
+                "role": "",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "outputs.cmd.remainingWaitingTime",
+            "type": "state",
+            "common": {
+                "name": "Waiting time msec of current step",
+                "type": "string",
+                "role": "",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "outputs.cmd.remainingMonitoringTime",
+            "type": "state",
+            "common": {
+                "name": "Waiting time msec of current step",
+                "type": "string",
+                "role": "",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "outputs.sequence.cmd",
+            "type": "state",
+            "common": {
+                "name": "cmd output",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "outputs.sequence.cmd_01",
+            "type": "state",
+            "common": {
+                "name": "cmd output of step",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "outputs.sequence.cmd_02",
+            "type": "state",
+            "common": {
+                "name": "cmd output of step",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "outputs.sequence.cmd_03",
+            "type": "state",
+            "common": {
+                "name": "cmd output of step",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "outputs.sequence.cmd_04",
+            "type": "state",
+            "common": {
+                "name": "cmd output of step",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "outputs.sequence.cmd_05",
+            "type": "state",
+            "common": {
+                "name": "cmd output of step",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": "s"
+            },
+            "native": {}
+        },
+        {
+            "_id": "outputs.sequence.cmd_06",
+            "type": "state",
+            "common": {
+                "name": "cmd output of step",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "outputs.sequence.cmd_07",
+            "type": "state",
+            "common": {
+                "name": "cmd output of step",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "outputs.sequence.cmd_08",
+            "type": "state",
+            "common": {
+                "name": "cmd output of step",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "outputs.sequence.cmd_09",
+            "type": "state",
+            "common": {
+                "name": "cmd output of step",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "outputs.sequence.cmd_10",
+            "type": "state",
+            "common": {
+                "name": "cmd output of step",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "outputs.sequence.cmd_11",
+            "type": "state",
+            "common": {
+                "name": "cmd output of step",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "outputs.sequence.cmd_12",
+            "type": "state",
+            "common": {
+                "name": "cmd output of step",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "outputs.sequence.cmd_13",
+            "type": "state",
+            "common": {
+                "name": "cmd output of step",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "outputs.sequence.cmd_14",
+            "type": "state",
+            "common": {
+                "name": "cmd output of step",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "outputs.sequence.cmd_15",
+            "type": "state",
+            "common": {
+                "name": "cmd output of step",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.name_01",
+            "type": "state",
+            "common": {
+                "name": "name of step",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.name_02",
+            "type": "state",
+            "common": {
+                "name": "name of step",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.name_03",
+            "type": "state",
+            "common": {
+                "name": "name of step",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.name_04",
+            "type": "state",
+            "common": {
+                "name": "name of step",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.name_05",
+            "type": "state",
+            "common": {
+                "name": "name of step",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.name_06",
+            "type": "state",
+            "common": {
+                "name": "name of step",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.name_07",
+            "type": "state",
+            "common": {
+                "name": "name of step",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.name_08",
+            "type": "state",
+            "common": {
+                "name": "name of step",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.name_09",
+            "type": "state",
+            "common": {
+                "name": "name of step",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.name_10",
+            "type": "state",
+            "common": {
+                "name": "name of step",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.name_11",
+            "type": "state",
+            "common": {
+                "name": "name of step",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.name_12",
+            "type": "state",
+            "common": {
+                "name": "name of step",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.name_13",
+            "type": "state",
+            "common": {
+                "name": "name of step",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.name_14",
+            "type": "state",
+            "common": {
+                "name": "name of step",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.name_15",
+            "type": "state",
+            "common": {
+                "name": "name of step",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.condition",
+            "type": "state",
+            "common": {
+                "name": "Transition condition",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.condition_01",
+            "type": "state",
+            "common": {
+                "name": "Transition condition to next step",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.condition_02",
+            "type": "state",
+            "common": {
+                "name": "Transition condition to next step",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.condition_03",
+            "type": "state",
+            "common": {
+                "name": "Transition condition to next step",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.condition_04",
+            "type": "state",
+            "common": {
+                "name": "Transition condition to next step",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.condition_05",
+            "type": "state",
+            "common": {
+                "name": "Transition condition to next step",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.condition_06",
+            "type": "state",
+            "common": {
+                "name": "Transition condition to next step",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.condition_07",
+            "type": "state",
+            "common": {
+                "name": "Transition condition to next step",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.condition_08",
+            "type": "state",
+            "common": {
+                "name": "Transition condition to next step",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.condition_09",
+            "type": "state",
+            "common": {
+                "name": "Transition condition to next step",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.condition_10",
+            "type": "state",
+            "common": {
+                "name": "Transition condition to next step",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.condition_11",
+            "type": "state",
+            "common": {
+                "name": "Transition condition to next step",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.condition_12",
+            "type": "state",
+            "common": {
+                "name": "Transition condition to next step",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.condition_13",
+            "type": "state",
+            "common": {
+                "name": "Transition condition to next step",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.condition_14",
+            "type": "state",
+            "common": {
+                "name": "Transition condition to next step",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.condition_15",
+            "type": "state",
+            "common": {
+                "name": "Transition condition to next step",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.commandString_01",
+            "type": "state",
+            "common": {
+                "name": "String will be written to outputs.sequences.cmd_xx",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.commandString_02",
+            "type": "state",
+            "common": {
+                "name": "String will be written to outputs.sequences.cmd_xx",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.commandString_03",
+            "type": "state",
+            "common": {
+                "name": "String will be written to outputs.sequences.cmd_xx",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.commandString_04",
+            "type": "state",
+            "common": {
+                "name": "String will be written to outputs.sequences.cmd_xx",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.commandString_05",
+            "type": "state",
+            "common": {
+                "name": "String will be written to outputs.sequences.cmd_xx",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.commandString_06",
+            "type": "state",
+            "common": {
+                "name": "String will be written to outputs.sequences.cmd_xx",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.commandString_07",
+            "type": "state",
+            "common": {
+                "name": "String will be written to outputs.sequences.cmd_xx",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.commandString_08",
+            "type": "state",
+            "common": {
+                "name": "String will be written to outputs.sequences.cmd_xx",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.commandString_09",
+            "type": "state",
+            "common": {
+                "name": "String will be written to outputs.sequences.cmd_xx",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.commandString_10",
+            "type": "state",
+            "common": {
+                "name": "String will be written to outputs.sequences.cmd_xx",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.commandString_11",
+            "type": "state",
+            "common": {
+                "name": "String will be written to outputs.sequences.cmd_xx",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.commandString_12",
+            "type": "state",
+            "common": {
+                "name": "String will be written to outputs.sequences.cmd_xx",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.commandString_13",
+            "type": "state",
+            "common": {
+                "name": "String will be written to outputs.sequences.cmd_xx",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.commandString_14",
+            "type": "state",
+            "common": {
+                "name": "String will be written to outputs.sequences.cmd_xx",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.commandString_15",
+            "type": "state",
+            "common": {
+                "name": "String will be written to outputs.sequences.cmd_xx",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.monitoringTime_01",
+            "type": "state",
+            "common": {
+                "name": "monitoring time in mSec between cmd and FB",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.monitoringTime_02",
+            "type": "state",
+            "common": {
+                "name": "monitoring time in mSec between cmd and FB",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.monitoringTime_03",
+            "type": "state",
+            "common": {
+                "name": "monitoring time in mSec between cmd and FB",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.monitoringTime_04",
+            "type": "state",
+            "common": {
+                "name": "monitoring time in mSec between cmd and FB",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.monitoringTime_05",
+            "type": "state",
+            "common": {
+                "name": "monitoring time in mSec between cmd and FB",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.monitoringTime_06",
+            "type": "state",
+            "common": {
+                "name": "monitoring time in mSec between cmd and FB",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.monitoringTime_07",
+            "type": "state",
+            "common": {
+                "name": "monitoring time in mSec between cmd and FB",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.monitoringTime_08",
+            "type": "state",
+            "common": {
+                "name": "monitoring time in mSec between cmd and FB",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.monitoringTime_09",
+            "type": "state",
+            "common": {
+                "name": "monitoring time in mSec between cmd and FB",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.monitoringTime_10",
+            "type": "state",
+            "common": {
+                "name": "monitoring time in mSec between cmd and FB",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.monitoringTime_11",
+            "type": "state",
+            "common": {
+                "name": "monitoring time in mSec between cmd and FB",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.monitoringTime_12",
+            "type": "state",
+            "common": {
+                "name": "monitoring time in mSec between cmd and FB",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.monitoringTime_13",
+            "type": "state",
+            "common": {
+                "name": "monitoring time in mSec between cmd and FB",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.monitoringTime_14",
+            "type": "state",
+            "common": {
+                "name": "monitoring time in mSec between cmd and FB",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "inputs.sequence.monitoringTime_15",
+            "type": "state",
+            "common": {
+                "name": "monitoring time in mSec between cmd and FB",
+                "type": "string",
+                "role": "indicator.state",
+                "read": true,
+                "write": true,
+                "desc": ""
+            },
+            "native": {}
+        }
+    ]
+}

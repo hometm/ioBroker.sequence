@@ -1,0 +1,49 @@
+{
+  "name": "iobroker.sequence",
+  "description": "This adapter offers the possibility of creating a command sequence.",
+  "version": "0.0.1",
+  "author": {
+    "name": "hometm",
+    "email": "hometm@gmx.de"
+  },
+  "contributors": [
+    {
+      "name": "hometm",
+      "email": "hometm@gmx.de"
+    }
+  ],
+  "homepage": "https://github.com/hometm/ioBroker.sequence",
+  "readme":   "https://github.com/hometm/ioBroker.sequence/blob/master/README.md",
+  "license": "MIT",
+  "keywords": [
+    "ioBroker",
+    "sequence",
+    "Schrittkette",
+    "home automation"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hometm/ioBroker.sequence"
+  },
+  "dependencies": {
+
+  },
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-replace": "~0.8.0",
+    "grunt-contrib-jshint": "~0.11.1",
+    "grunt-jscs": "~1.6.0",
+    "grunt-http": "~1.6.0",
+    "grunt-contrib-clean": "~0.6.0",
+    "grunt-contrib-concat": "~0.5.1",
+    "grunt-contrib-copy": "~0.8.0",
+    "grunt-exec": "~0.4.5"
+  },
+  "bugs": {
+    "url": "https://github.com/hometm/ioBroker.sequence/issues"
+  },
+  "main": "vcard.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
